@@ -8,6 +8,13 @@
 /.bundle
 
 # Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-*
+db/development.sqlite3
+
+
+.DS_Store
+db/.DS_Store
 
 # Ignore all logfiles and tempfiles.
 /log/*
