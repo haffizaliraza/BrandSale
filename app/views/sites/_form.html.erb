@@ -1,0 +1,117 @@
+<style>
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    color: #FF5757;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: #FF5757;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+  div {
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+</style>
+
+<%= form_with(model: site) do |form| %>
+  <% if site.errors.any? %>
+    <div>
+      <h2><%= pluralize(site.errors.count, "error") %> prohibited this site from being saved:</h2>
+
+      <ul>
+        <% site.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :url %>
+    <%= form.text_field :url %>
+  </div>
+
+  <div>
+    <%= form.label :products %>
+    <%= form.text_field :products %>
+  </div>
+
+  <div>
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div>
+    <%= form.label :image_attribute %>
+    <%= form.text_field :image_attribute %>
+  </div>
+
+  <div>
+    <%= form.label :product_titile %>
+    <%= form.text_field :product_titile %>
+  </div>
+
+  <div>
+    <%= form.label :old_price %>
+    <%= form.text_field :old_price %>
+  </div>
+
+  <div>
+    <%= form.label :new_price %>
+    <%= form.text_field :new_price %>
+  </div>
+
+  <div>
+    <%= form.label :product_url %>
+    <%= form.text_field :product_url %>
+  </div>
+
+  <div>
+    <%= form.label :brand_name %>
+    <%= form.text_field :brand_name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

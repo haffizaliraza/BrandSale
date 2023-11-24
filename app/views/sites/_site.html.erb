@@ -1,0 +1,62 @@
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div id="<%= dom_id site %>">
+  <table>
+    <tr>
+      <th>Attribute</th>
+      <th>Value</th>
+    </tr>
+    <tr>
+      <td><strong>Url:</strong></td>
+      <td><%= site.url %></td>
+    </tr>
+    <tr>
+      <td><strong>Products:</strong></td>
+      <td><%= site.products %></td>
+    </tr>
+    <tr>
+      <td><strong>Image:</strong></td>
+      <td><%= site.image %></td>
+    </tr>
+    <tr>
+    <td><strong>Image Attribute:</strong></td>
+    <td><%= site.image_attribute %></td>
+  </tr>
+    <tr>
+      <td><strong>Product Title:</strong></td>
+      <td><%= site.product_titile %></td>
+    </tr>
+    <tr>
+      <td><strong>Old Price:</strong></td>
+      <td><%= site.old_price %></td>
+    </tr>
+    <tr>
+      <td><strong>New Price:</strong></td>
+      <td><%= site.new_price %></td>
+    </tr>
+    <tr>
+      <td><strong>Product Url:</strong></td>
+      <td><%= site.product_url %></td>
+    </tr>
+    <tr>
+      <td><strong>Brand Name:</strong></td>
+      <td><%= site.brand_name %></td>
+    </tr>
+  </table>
+</div>
