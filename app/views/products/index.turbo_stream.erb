@@ -1,0 +1,8 @@
+<%= turbo_stream.remove "spinner" %>
+<%= turbo_stream.append "products" do %>
+  <%= render @products %>
+
+  <% if @products.page(@page.to_i + 1).out_of_range? %>
+    <span class="hidden" data-pagination-target="noRecords"></span>
+  <% end %>
+<% end %>

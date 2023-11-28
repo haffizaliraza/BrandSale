@@ -1,48 +1,4 @@
 <style>
-.pagination a, .pagination span.current, .pagination span.gap {
-    float: left;
-    padding: 0 14px;
-    line-height: 38px;
-    text-decoration: none;
-    background-color: white;
-    border: 1px solid #DDD;
-    border-left-width: 0;
-}
-
-.pagination-div{
-  margin-left: 20%;
-  margin-bottom: 100px;
-
-}
-.pagination {
-    border-left: 1px solid #ddd;
-    .first{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .prev {
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .page{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .next{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .last{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-}
-
   .products-container {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +11,11 @@
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .product-container:hover {
+    transform: translateY(-5px);
   }
 
   .product-container p {
@@ -68,88 +29,89 @@
   .product-image {
     max-width: 100%;
     height: auto;
+    margin-bottom: 10px; /* Added margin between image and text */
   }
+
   .filter-form {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #f9f9f9;
-}
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
 
-/* Style the label */
-.filter-form label {
-  display: block;
-  margin-bottom: 10px;
-  font-weight: bold;
-}
+  .filter-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+  }
 
-/* Style the select dropdown */
-.brand-select {
-  width: 200px;
-  padding: 8px;
-  font-size: 14px;
-}
+  .brand-select {
+    width: 200px;
+    padding: 8px;
+    font-size: 14px;
+  }
 
-/* Style the submit button */
-.filter-button {
-  background-color: #3498db;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
+  .filter-button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
 
-.filter-button:hover {
-  background-color: #2980b9;
-}
+  .filter-button:hover {
+    background-color: #2980b9;
+  }
 </style>
+
+<!-- Your existing HTML code remains unchanged -->
+
 
 <%= form_tag(products_path, method: 'get', class: 'filter-form') do %>
   <label for="brand">Filter by Brand:</label>
   <%= select_tag(:brand, options_for_select(@brands), prompt: 'Select a brand', class: 'brand-select') %>
   <%= submit_tag('Filter', class: 'filter-button') %>
 <% end %>
-
-<div class="products-container">
+<br>
+<div id="products" data-controller="pagination" data-pagination-target="products"
+  data-pagination-url-value="<%= products_url %> "
+  data-pagination-page-value="<%= 2 %>" class="products-container">
   <% @products.each do |product| %>
     <div id="<%= dom_id product %>" class="product-container">
-      <p>
-        <strong>Name:</strong>
-        <%= product.name %>
-      </p>
+    <p>
+      <strong>Name:</strong>
+      <%= product.name %>
+    </p>
+   
+    <%= link_to product.url, target: "_blank" do %>
      
-      <%= link_to product.url, target: "_blank" do %>
-       
-        <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
-      <% end %>
+      <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
+    <% end %>
 
-      <p>
-        <strong>Price:</strong>
-        <%= product.price %>
-      </p>
+    <p>
+      <strong>Price:</strong>
+      <%= product.price %>
+    </p>
 
-      <p>
-        <strong>Brand:</strong>
-        <%= product.brand %>
-      </p>
+    <p>
+      <strong>Brand:</strong>
+      <%= product.brand %>
+    </p>
 
-      <p>
-        <strong>Discount:</strong>
-        <%= product.discount %>
-      </p>
+    <p>
+      <strong>Discount:</strong>
+      <%= product.discount %>
+    </p>
 
-      <p>
-        <strong>After discount price:</strong>
-        <%= product.after_discount_price %>
-      </p>
-    </div>
+    <p>
+      <strong>After discount price:</strong>
+      <%= product.after_discount_price %>
+    </p>
+  </div>
   <% end %>
 </div>
-
-<div class="pagination-div">
-  <%= paginate @products %>
-</div>
-
 

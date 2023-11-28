@@ -1,74 +1,50 @@
 <style>
-  .products-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+  .product-detail {
+    margin-bottom: 10px;
   }
-
-  .product-container {
-    flex: 1 0 calc(25% - 20px);
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
+  .product-card {
+    flex: 0 0 calc(20% - 20px); /* Adjust the width and margin based on your design */
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 20%;
   }
-
-  .product-container p {
-    margin: 5px 0;
-  }
-
-  .product-container strong {
-    color: #333;
-  }
-
   .product-image {
     max-width: 100%;
     height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   }
 </style>
+<div class="product-card">
+  <p class="product-detail">
+    <strong>Name:</strong>
+    <%= product.name %>
+  </p>
 
-<div class="products-container">
-  <% @products.each do |product| %>
-    <div id="<%= dom_id product %>" class="product-container">
-      <p>
-        <strong>Name:</strong>
-        <%= product.name %>
-      </p>
-
-      <p>
-        <strong>Url:</strong>
-        <%= product.url %>
-      </p>
-
-      <p>
-        <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
-      </p>
-
-      <p>
-        <strong>Old Price:</strong>
-        <%= product.price %>
-      </p>
-
-      <p>
-        <strong>Discounted Price:</strong>
-        <%= product.after_discount_price %>
-      </p>
-
-      <p>
-        <strong>Brand:</strong>
-        <%= product.brand %>
-      </p>
-
-      <p>
-        <strong>Discount:</strong>
-        <%= product.discount %>
-      </p>
-
-      <p>
-        <strong>After discount price:</strong>
-        <%= product.after_discount_price %>
-      </p>
-    </div>
+  <%= link_to product.url, target: "_blank" do %>
+    <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
   <% end %>
-</div>
 
+  <p class="product-detail">
+    <strong>Price:</strong>
+    <%= product.price %>
+  </p>
+
+  <p class="product-detail">
+    <strong>Brand:</strong>
+    <%= product.brand %>
+  </p>
+
+  <p class="product-detail">
+    <strong>Discount:</strong>
+    <%= product.discount %>
+  </p>
+
+  <p class="product-detail">
+    <strong>After discount price:</strong>
+    <%= product.after_discount_price %>
+  </p>
+  </div>
