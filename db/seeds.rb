@@ -159,3 +159,11 @@ site_list.each do |site|
     end
 end
 end
+
+Product.where(brand: "LeisureClub").update(discount: 20)
+Product.where(brand: "Chinyere").update(discount: 40)
+Product.where(brand: "Pepperland").update(discount: 30)
+Product.where(brand: "GulAhmed").update(discount: 40)
+Product.where(brand: "Bareeze").update(discount: 15)
+Product.where(brand: "sanasafinaz").update(discount: 20)
+Product.where(brand: "MannatClothing").update(discount: 30)

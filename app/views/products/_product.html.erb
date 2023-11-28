@@ -25,7 +25,14 @@
   </p>
 
   <%= link_to product.url, target: "_blank" do %>
-    <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
+    <div style="position: relative;">
+      <!-- Add the "<%= product.discount%> off" label with red color -->
+      <span style="position: absolute; top: 0; left: 0; background-color: red; color: white; padding: 5px;">
+      <%= product.discount %> off
+      </span>
+
+      <img src="<%= product.image %>" alt="<%= product.name %> Image" class="product-image">
+    </div>
   <% end %>
 
   <p class="product-detail">
