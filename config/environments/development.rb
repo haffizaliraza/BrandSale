@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Enable server timing
   config.server_timing = true
-  config.hosts << "web-production-c622.up.railway.app"
+  config.hosts << "brandsale.up.railway.app"
 
 
   # Enable/disable caching. By default caching is disabled.
