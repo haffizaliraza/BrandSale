@@ -110,6 +110,17 @@ sites = [
       "product_url": "h3.t4s-product-title a",
       "brand_name": "khasstores",
       "image_attribute": "data-src"
+    },
+    {
+      "url": "https://www.gulljee.com/collections/sale",
+      "products": "div.grid.grid--no-gutters.grid--uniform",
+      "image": "img.product-card__image",
+      "product_titile": "div.product-card__name",
+      "old_price": "s.product-card__regular-price",
+      "new_price": "span.visually-hidden",
+      "product_url": "a",
+      "brand_name": "Gulljee",
+      "image_attribute": "src"
     }
   ]
 sites.each do |site|
@@ -167,3 +178,4 @@ Product.where(brand: "GulAhmed").update(discount: 40)
 Product.where(brand: "Bareeze").update(discount: 15)
 Product.where(brand: "sanasafinaz").update(discount: 20)
 Product.where(brand: "MannatClothing").update(discount: 30)
+Product.where(brand: "Gulljee").update(discount: 20)
