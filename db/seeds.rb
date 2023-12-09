@@ -121,7 +121,18 @@ sites = [
       "product_url": "a",
       "brand_name": "Gulljee",
       "image_attribute": "src"
-    }
+    },
+    {    
+    "url": "https://shop.ethnic.pk/collections/sale",
+    "products": "div.collection",
+    "image": "img",
+    "product_titile": "a.full-unstyled-link",
+    "old_price": "span.money",
+    "new_price": "span.money",
+    "product_url": "a",
+    "brand_name": "ethnic",
+    "image_attribute": "src"
+  }
   ]
 sites.each do |site|
     Site.create(url: site[:url], products: site[:products], image: site[:image], product_titile: site[:product_titile], old_price: site[:old_price], new_price: site[:new_price], product_url: site[:product_url], brand_name: site[:brand_name], image_attribute: site[:image_attribute])
