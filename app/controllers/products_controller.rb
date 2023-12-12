@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     if params[:brand].present?
       @products = Product.where(brand: params[:brand]).page params[:page]
     else
-      @products = Product.order(:brand_name).page params[:page]
+      @products = Product.order(:brand).page params[:page]
     end
   end
 

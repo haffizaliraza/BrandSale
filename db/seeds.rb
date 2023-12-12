@@ -124,7 +124,7 @@ sites = [
     },
     {    
     "url": "https://shop.ethnic.pk/collections/sale",
-    "products": "div.collection",
+    "products": "ul",
     "image": "img",
     "product_titile": "a.full-unstyled-link",
     "old_price": "span.money",
