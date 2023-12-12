@@ -10,7 +10,8 @@ sites = [
       "new_price": "span.special-price",
       "product_url": "a.product-title",
       "brand_name": "Chinyere",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://pk.khaadi.com/sale/",
@@ -21,7 +22,8 @@ sites = [
       "new_price": "value cc-price",
       "product_url": "a",
       "brand_name": "khaadi",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://www.leisureclub.pk/collections/sale",
@@ -32,7 +34,8 @@ sites = [
       "new_price": "span.money",
       "product_url": "a",
       "brand_name": "LeisureClub",
-      "image_attribute": "data-src"
+      "image_attribute": "data-src",
+      "category": "Kids Clothing"
     },
     {
       "url": "https://pepperland.pk/collections/sale",
@@ -43,7 +46,9 @@ sites = [
       "new_price": "span.old-price",
       "product_url": "a",
       "brand_name": "Pepperland",
-      "image_attribute": "data-src"
+      "image_attribute": "data-src",
+      "category": "Kids Clothing"
+
     },
     {
       "url": "https://www.gulahmedshop.com/sale",
@@ -54,7 +59,8 @@ sites = [
       "new_price": "span.price",
       "product_url": "a",
       "brand_name": "GulAhmed",
-      "image_attribute": "data-desk-owlsrc"
+      "image_attribute": "data-desk-owlsrc",
+      "category": "men's & women's Clothing"
     },
     {
       "url": "https://www.bareeze.com/pk/sale.html",
@@ -65,7 +71,8 @@ sites = [
       "new_price": "span.price-wrapper span.price",
       "product_url": "a.product-item-link",
       "brand_name": "Bareeze",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://www.minnieminors.com/collections/sale",
@@ -76,7 +83,8 @@ sites = [
       "new_price": "span.special-price span.money",
       "product_url": "a.product-grid-image",
       "brand_name": "MinnieMinors",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Kids Clothing"
     },
     {
       "url": "https://www.sanasafinaz.com/pk/sale.html",
@@ -87,7 +95,8 @@ sites = [
       "new_price": "span.special-price span.price",
       "product_url": "a.product-item-link",
       "brand_name": "sanasafinaz",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://mannatclothing.com/collections/sale",
@@ -98,7 +107,8 @@ sites = [
       "new_price": "span.money",
       "product_url": "a.grid-product__link",
       "brand_name": "MannatClothing",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://www.khasstores.com/collections/sale",
@@ -109,7 +119,8 @@ sites = [
       "new_price": "span.money",
       "product_url": "h3.t4s-product-title a",
       "brand_name": "khasstores",
-      "image_attribute": "data-src"
+      "image_attribute": "data-src",
+      "category": "Women's Clothing"
     },
     {
       "url": "https://www.gulljee.com/collections/sale",
@@ -120,7 +131,8 @@ sites = [
       "new_price": "span.visually-hidden",
       "product_url": "a",
       "brand_name": "Gulljee",
-      "image_attribute": "src"
+      "image_attribute": "src",
+      "category": "Women's Clothing"
     },
     {    
     "url": "https://shop.ethnic.pk/collections/sale",
@@ -131,11 +143,12 @@ sites = [
     "new_price": "span.money",
     "product_url": "a",
     "brand_name": "ethnic",
-    "image_attribute": "src"
+    "image_attribute": "src",
+    "category": "Women's Clothing"
   }
   ]
 sites.each do |site|
-    Site.create(url: site[:url], products: site[:products], image: site[:image], product_titile: site[:product_titile], old_price: site[:old_price], new_price: site[:new_price], product_url: site[:product_url], brand_name: site[:brand_name], image_attribute: site[:image_attribute])
+    Site.create(url: site[:url],category: site[:category], products: site[:products], image: site[:image], product_titile: site[:product_titile], old_price: site[:old_price], new_price: site[:new_price], product_url: site[:product_url], brand_name: site[:brand_name], image_attribute: site[:image_attribute])
 end
 site_list = Site.all
 site_list.each do |site|
@@ -176,7 +189,7 @@ site_list.each do |site|
             puts "new price cant found: An error occurred: #{e.message}"
         end
         if(url and image and name and old_price and new_price)
-            Product.create(name: name, url: url, image: image, price: old_price, brand: site.brand_name, after_discount_price: new_price)
+            Product.create(name: name, url: url, image: image, price: old_price, brand: site.brand_name, after_discount_price: new_price, category: site.category ? site.category : "Women's Clothing")
         end
     end
 end

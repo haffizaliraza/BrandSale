@@ -4,8 +4,11 @@ class ProductsController < ApplicationController
   # GET /products or /products.json
   def index
     @brands  = Product.distinct.pluck(:brand)
+    @categories  = Product.distinct.pluck(:category)
     if params[:brand].present?
       @products = Product.where(brand: params[:brand]).page params[:page]
+    elsif params[:category].present?
+      @products = Product.where(category: params[:category]).page params[:page]
     else
       @products = Product.order(:brand).page params[:page]
     end

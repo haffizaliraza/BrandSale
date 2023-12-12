@@ -76,6 +76,11 @@
   <%= select_tag(:brand, options_for_select(@brands), prompt: 'Select a brand', class: 'brand-select') %>
   <%= submit_tag('Filter', class: 'filter-button') %>
 <% end %>
+<%= form_tag(products_path, method: 'get', class: 'filter-form') do %>
+  <label for="category">Filter by category:</label>
+  <%= select_tag(:category, options_for_select(@categories), prompt: 'Select a category', class: 'category-select') %>
+  <%= submit_tag('Filter', class: 'filter-button') %>
+<% end %>
 <br>
 <div id="products" data-controller="pagination" data-pagination-target="products"
   data-pagination-url-value="<%= products_url %> "
